@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
-using Wkhtmltopdf.NetCore.Interfaces;
+using Wkhtmltopdf.NetCore.Implementation.Interfaces;
 
-namespace Wkhtmltopdf.NetCore
+namespace Wkhtmltopdf.NetCore.Implementation
 {
     public class ConvertOptions : IConvertOptions
     {
         public ConvertOptions()
         {
-            this.PageMargins = new Margins();
+            PageMargins = new Margins();
         }
 
         /// <summary>
@@ -109,8 +109,8 @@ namespace Wkhtmltopdf.NetCore
         {
             var result = new StringBuilder();
 
-            if (this.PageMargins != null)
-                result.Append(this.PageMargins.ToString());
+            if (PageMargins != null)
+                result.Append(PageMargins.ToString());
 
             result.Append(" ");
             result.Append(GetConvertBaseOptions());
@@ -122,7 +122,7 @@ namespace Wkhtmltopdf.NetCore
         {
             var result = new StringBuilder();
 
-            var fields = this.GetType().GetProperties();
+            var fields = GetType().GetProperties();
             foreach (var fi in fields)
             {
                 var of = fi.GetCustomAttributes(typeof(OptionFlag), true).FirstOrDefault() as OptionFlag;

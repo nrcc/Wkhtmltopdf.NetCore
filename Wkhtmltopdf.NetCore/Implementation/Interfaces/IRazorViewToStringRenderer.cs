@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
 
-namespace Wkhtmltopdf.NetCore
+namespace Wkhtmltopdf.NetCore.Implementation.Interfaces
 {
     public interface IRazorViewToStringRenderer
     {
